@@ -34,17 +34,17 @@ void draw() {
     //println(faces[i].x + "," + faces[i].y);
     if (faces[i].x < 320){
       float scaling = 1.5;
-      //float width0  = faces[i].width;
-      //float height0 = faces[i].height;
-      //float width1  = scaling*faces[i].width;
-      //float height1 = scaling*faces[i].he;
       float shiftedX = faces[i].x - ((faces[i].width)*(scaling -1)/2);
       float shiftedY = faces[i].y - ((faces[i].height)*(scaling -1)/2);
       
       image(darth,shiftedX, shiftedY, faces[i].width*scaling, faces[i].height*scaling);
     }
     else {
-      image(ackbar,faces[i].x, faces[i].y, faces[i].width, faces[i].height);
+      float scaling = 1.5;
+      float shiftedX = faces[i].x - ((faces[i].width)*(scaling -1)/2);
+      float shiftedY = faces[i].y - ((faces[i].height)*(scaling -1)/2);
+      
+      image(ackbar,shiftedX, shiftedY, faces[i].width*scaling, faces[i].height*scaling);
     }
   }
 }
