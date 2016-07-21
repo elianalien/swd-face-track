@@ -21,18 +21,20 @@ void setup() {
 
 void draw() {
   
-  opencv.loadImage(video);
-  image(video, 0, 0 );
-
-  noFill();
-  stroke(0, 255, 0);
-  strokeWeight(3);
+  video.loadPixels();
+    scale(-1,1);
+    translate(-width,0);
+  video.updatePixels();
+  
+  image(video, 0, 0);
+  opencv.loadImage(video);    
+  
   Rectangle[] faces = opencv.detect();
-  //println(faces.length);
-
+  println(faces.length);
+  
   for (int i = 0; i < faces.length; i++) {
-    //println(faces[i].x + "," + faces[i].y);
-    if (faces[i].x < 320){
+    println("x: " + faces[i].x + " , " + "y: "+ faces[i].y);
+    if (faces[i].x < 200){
       float scaling = 1.5;
       float shiftedX = faces[i].x - ((faces[i].width)*(scaling -1)/2);
       float shiftedY = faces[i].y - ((faces[i].height)*(scaling -1)/2);
